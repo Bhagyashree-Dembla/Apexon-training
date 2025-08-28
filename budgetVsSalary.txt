@@ -1,0 +1,11 @@
+For every project tell budget v/s salary.
+
+SELECT p.id AS project_id,
+p.budget, 
+(SELECT SUM(e.salary/ep_count.project_count) FROM employees e JOIN employees_projects ep ON e.id = ep.employee_id 
+JOIN (SELECT employee_id, COUNT(*) AS project_count FROM employees_projects GROUP BY employee_id
+     ) AS ep_count ON ep.employee_id = ep_count.employee_id
+WHERE ep.project_id = p.id
+) AS total_employee_salary
+FROM projects p;
+
