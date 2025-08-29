@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- First Test -->
+    <bean id="coreJavaTest" class="com.acme.Test">
+        <property name="testId" value="T001"/>
+        <property name="testTitle" value="Core Java Test"/>
+        <property name="testMarks" value="80"/>
+    </bean>
+
+    <!-- Second Test -->
+    <bean id="oracleTest" class="com.acme.Test">
+        <property name="testId" value="T002"/>
+        <property name="testTitle" value="Oracle Test"/>
+        <property name="testMarks" value="83"/>
+    </bean>
+
+    <!-- First Student -->
+    <bean id="student1" class="com.acme.Student">
+        <property name="studentId" value="S001"/>
+        <property name="studentName" value="Steve"/>
+        <property name="studentTest" ref="coreJavaTest"/>
+    </bean>
+
+    <!-- Second Student -->
+    <bean id="student2" class="com.acme.Student">
+        <property name="studentId" value="S002"/>
+        <property name="studentName" value="John"/>
+        <property name="studentTest" ref="oracleTest"/>
+    </bean>
+</beans>
